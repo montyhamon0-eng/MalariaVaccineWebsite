@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Daily Report: independent-style coverage of science, health and world news.">
+  <title>The Daily Report | Science, Health & World News</title>
+  <style>
+    :root {
+      --ink: #171717;
+      --muted: #686868;
+      --line: #dedede;
+      --paper: #ffffff;
+      --soft: #f4f4f1;
+      --red: #c9272c;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); }
+    a { color: inherit; }
+    .breaking {
+      min-height: 34px; display: flex; align-items: stretch; overflow: hidden;
+      background: #151515; color: white; font-size: 12px; white-space: nowrap;
+    }
+    .breaking-label {
+      display: flex; align-items: center; padding: 0 14px; background: var(--red);
+      font-size: 10px; font-weight: 800; letter-spacing: 1px; flex-shrink: 0;
+    }
+    .ticker-window { overflow: hidden; display: flex; align-items: center; flex: 1; }
+    .ticker-track { display: flex; align-items: center; gap: 48px; padding-left: 22px; animation: ticker 32s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item::before { content: "•"; color: #ff6266; margin-right: 10px; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .masthead { max-width: 1180px; margin: auto; padding: 28px 24px 20px; text-align: center; }
+    .eyebrow { font-size: 10px; letter-spacing: 2.6px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+    .brand { font-family: var(--serif); font-size: clamp(38px, 6vw, 68px); font-weight: 900; letter-spacing: -2px; line-height: 1; margin: 10px 0 8px; }
+    .tagline { color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 15px; }
+    nav { border-top: 1px solid var(--ink); border-bottom: 3px solid var(--ink); display: flex; justify-content: center; gap: 34px; padding: 13px 16px; }
+    nav a { text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; font-weight: 800; }
+    nav a:hover { color: var(--red); }
+    main { max-width: 1180px; margin: 0 auto; padding: 28px 24px 70px; }
+    .section-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .section-kicker::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+    .lead-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(250px, 1fr); gap: 28px; }
+    .story-image { width: 100%; display: block; object-fit: cover; background: #e8e8e4; }
+    .lead-image { aspect-ratio: 16 / 9; }
+    .image-placeholder { display: flex; align-items: center; justify-content: center; color: #666; text-align: center; padding: 20px; font-size: 12px; letter-spacing: .5px; }
+    .category { color: var(--red); text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; font-weight: 800; margin: 17px 0 9px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); }
+    h1 { font-size: clamp(30px, 4.2vw, 48px); line-height: 1.05; letter-spacing: -.7px; margin-bottom: 13px; }
+    h2 { font-size: 25px; line-height: 1.15; margin-bottom: 9px; }
+    h3 { font-size: 19px; line-height: 1.2; margin-bottom: 8px; }
+    .dek { font-family: var(--serif); font-size: 18px; line-height: 1.55; color: #444; }
+    .byline { font-size: 11px; color: var(--muted); margin: 15px 0; }
+    .story-copy { font-size: 14px; line-height: 1.75; color: #333; }
+    .side-stories { border-left: 1px solid var(--line); padding-left: 25px; }
+    .side-story { padding: 0 0 20px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
+    .side-story:last-child { border-bottom: 0; }
+    .side-story .category { margin-top: 0; }
+    .side-story p { font-size: 12px; line-height: 1.6; color: var(--muted); margin-bottom: 0; }
+    .article { max-width: 760px; margin: 48px auto 0; padding-top: 28px; border-top: 1px solid var(--line); }
+    .article-header { text-align: center; }
+    .article-header h2 { font-size: clamp(30px, 4vw, 42px); line-height: 1.1; margin: 12px 0; }
+    .article-photo { aspect-ratio: 16 / 9; margin: 25px 0 10px; }
+    .photo-caption { font-size: 10px; color: var(--muted); margin-bottom: 24px; }
+    .article-body { font-family: var(--serif); font-size: 18px; line-height: 1.85; color: #292929; }
+    .article-body h3 { margin-top: 30px; font-size: 25px; }
+    .article-body p { margin-bottom: 20px; }
+    .article-body blockquote { border-left: 3px solid var(--red); padding: 4px 0 4px 20px; margin: 28px 0; font-size: 22px; line-height: 1.5; color: #444; }
+    .related { margin-top: 45px; padding-top: 22px; border-top: 3px solid var(--ink); }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .related-card { border-bottom: 1px solid var(--line); padding-bottom: 16px; }
+    .related-card .story-image { aspect-ratio: 16 / 9; }
+    .related-card h3 { margin-top: 12px; }
+    .related-card p { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    footer { background: #171717; color: #ddd; padding: 28px 24px; text-align: center; font-size: 11px; line-height: 1.7; }
+    footer strong { color: white; font-family: var(--serif); font-size: 22px; display: block; margin-bottom: 6px; }
+    @media (max-width: 760px) {
+      .masthead { padding: 24px 16px 18px; }
+      nav { gap: 17px; flex-wrap: wrap; }
+      nav a { font-size: 10px; }
+      main { padding: 22px 16px 50px; }
+      .lead-grid { grid-template-columns: 1fr; }
+      .side-stories { border-left: 0; border-top: 1px solid var(--line); padding: 22px 0 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .article-body { font-size: 17px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="breaking" aria-label="Latest headlines">
+    <div class="breaking-label">Latest News</div>
+    <div class="ticker-window">
+      <div class="ticker-track">
+        <span class="ticker-item">Malaria vaccine research continues to advance</span>
+        <span class="ticker-item">Researchers investigate new approaches to disease prevention</span>
+        <span class="ticker-item">Science and health updates from Australia and around the world</span>
+        <span class="ticker-item">Malaria vaccine research continues to advance</span>
+        <span class="ticker-item">Researchers investigate new approaches to disease prevention</span>
+        <span class="ticker-item">Science and health updates from Australia and around the world</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="eyebrow">Independent-style reporting · Science · Health · World</div>
+    <div class="brand">THE DAILY REPORT</div>
+    <div class="tagline">The stories behind the headlines.</div>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="#top-stories">Top Stories</a>
+    <a href="#science">Science</a>
+    <a href="#health">Health</a>
+    <a href="#world">World</a>
+    <a href="#full-article">Read Article</a>
+  </nav>
+
+  <main id="top-stories">
+    <div class="section-kicker"><span>Top story</span></div>
+    <section class="lead-grid" id="science">
+      <article>
+        <!-- Replace the placeholder below with: <img class="story-image lead-image" src="your-photo.jpg" alt="Describe your photo"> -->
+        <div class="story-image lead-image image-placeholder">YOUR MAIN PHOTO<br>Replace this box with an image of your choice</div>
+        <div class="category">Science &amp; Health</div>
+        <h1>Malaria Vaccine Research: What the Latest Developments Could Mean</h1>
+        <p class="dek">Scientists around the world are working on ways to improve malaria prevention. Here is a guide to the research, why it matters, and what questions remain.</p>
+        <div class="byline">By Your Name · 23 October 2026 · 5 min read</div>
+        <p class="story-copy">Use this space for a short introduction to your story. Explain the main development in a few sentences, then invite readers to continue to the full article below.</p>
+      </article>
+
+      <aside class="side-stories" id="health">
+        <div class="section-kicker"><span>More headlines</span></div>
+        <article class="side-story">
+          <div class="category">Research</div>
+          <h3>Griffith University and the Search for Better Malaria Prevention</h3>
+          <p>Add a brief summary here. Verify the details and link to the original research before publishing.</p>
+        </article>
+        <article class="side-story">
+          <div class="category">Global Health</div>
+          <h3>Why Malaria Prevention Remains a Global Priority</h3>
+          <p>Write two or three sentences explaining the context behind this topic.</p>
+        </article>
+        <article class="side-story" id="world">
+          <div class="category">Explainer</div>
+          <h3>How Do Vaccines Help the Immune System?</h3>
+          <p>A short explainer can help readers understand the science behind a developing story.</p>
+        </article>
+      </aside>
+    </section>
+
+    <article class="article" id="full-article">
+      <header class="article-header">
+        <div class="category">Science &amp; Health · Feature</div>
+        <h2>Malaria Vaccine Research: What You Need to Know</h2>
+        <p class="dek">A closer look at the research, the public-health challenge, and what happens next.</p>
+        <div class="byline">By Your Name · Updated 23 October 2026</div>
+      </header>
+
+      <!-- Replace this placeholder with your own image using the same img format as above. -->
+      <div class="story-image article-photo image-placeholder">YOUR ARTICLE PHOTO<br>Place a larger photo above your article</div>
+      <div class="photo-caption">Image caption: add the photographer, source, and any required credit here.</div>
+
+      <div class="article-body">
+        <p><strong>Start your article here.</strong> Use this first paragraph to summarise the main point of the story. A strong news article tells readers what happened, who is involved, where and when it happened, and why it matters.</p>
+
+        <h3>What researchers are investigating</h3>
+        <p>Describe the study or announcement in your own words. Include the name of the research team, the institution, when the work was published, and what the researchers actually found. Link to the original paper or an official university announcement so readers can check the details.</p>
+
+        <p>Explain any scientific terms in plain language. Be specific about whether the evidence comes from laboratory research, clinical trials, or a vaccine that is already approved for use. These are different stages of research and should not be described as if they are the same.</p>
+
+        <blockquote>“Add a short, accurately attributed quote from a verified source here.”</blockquote>
+
+        <h3>Why it matters</h3>
+        <p>Give readers the wider context. You could explain who is affected by malaria, what prevention methods are currently used, and how the research might fit into existing public-health efforts. Support factual claims with reliable sources.</p>
+
+        <h3>What happens next?</h3>
+        <p>Describe the next research steps or unanswered questions. Avoid saying that a new vaccine has been discovered or is ready for use unless reliable evidence confirms that exact claim.</p>
+
+        <h3>Sources</h3>
+        <p>Add links to the original study, an official research institution announcement, and a trusted public-health organisation. For example, you can start with the <a href="https://www.who.int/health-topics/malaria" target="_blank" rel="noopener noreferrer">World Health Organization's malaria information</a> and check any specific claim against the original source.</p>
+      </div>
+    </article>
+
+    <section class="related">
+      <div class="section-kicker"><span>More to read</span></div>
+      <div class="related-grid">
+        <article class="related-card">
+          <div class="story-image image-placeholder" style="aspect-ratio:16/9">PHOTO 1</div>
+          <div class="category">Science</div>
+          <h3>Add another story headline</h3>
+          <p>Write a short teaser for another article, then replace this placeholder with your own photo.</p>
+        </article>
+        <article class="related-card">
+          <div class="story-image image-placeholder" style="aspect-ratio:16/9">PHOTO 2</div>
+          <div class="category">Health</div>
+          <h3>Add a second story headline</h3>
+          <p>Use this card to highlight a related story or an explainer on your website.</p>
+        </article>
+        <article class="related-card">
+          <div class="story-image image-placeholder" style="aspect-ratio:16/9">PHOTO 3</div>
+          <div class="category">World</div>
+          <h3>Add a third story headline</h3>
+          <p>Keep the summary short so readers can scan the headlines quickly.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>THE DAILY REPORT</strong>
+    Science · Health · World News<br>
+    An independent student news project. Verify claims and credit images before publishing.
+  </footer>
+</body>
+</html>
