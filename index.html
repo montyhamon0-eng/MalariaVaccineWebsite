@@ -70,6 +70,13 @@
     .article-body h3 { margin-top: 30px; font-size: 25px; }
     .article-body p { margin-bottom: 20px; }
     .article-body blockquote { border-left: 3px solid var(--red); padding: 4px 0 4px 20px; margin: 28px 0; font-size: 22px; line-height: 1.5; color: #444; }
+    .data-graphic { margin: 28px 0; padding: 20px; border: 1px solid var(--line); background: var(--soft); font-family: var(--sans); }
+    .data-graphic h4 { margin: 0 0 8px; font-family: var(--sans); font-size: 17px; }
+    .graphic-note { font-size: 12px; line-height: 1.5; color: var(--muted); margin: 8px 0 16px; }
+    .bar-row { display: grid; grid-template-columns: minmax(130px, 1fr) minmax(90px, 2fr) 42px; gap: 10px; align-items: center; margin: 14px 0; font-size: 12px; }
+    .bar-track { height: 16px; background: #deded8; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--red); min-width: 4px; }
+    .bar-row strong { font-size: 13px; }
     .related { margin-top: 45px; padding-top: 22px; border-top: 3px solid var(--ink); }
     .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .related-card { border-bottom: 1px solid var(--line); padding-bottom: 16px; }
@@ -79,6 +86,9 @@
     footer { background: #171717; color: #ddd; padding: 28px 24px; text-align: center; font-size: 11px; line-height: 1.7; }
     footer strong { color: white; font-family: var(--serif); font-size: 22px; display: block; margin-bottom: 6px; }
     @media (max-width: 760px) {
+      .bar-row { grid-template-columns: 1fr 42px; }
+      .bar-track { grid-column: 1 / 2; grid-row: 2; }
+      .bar-row strong { grid-column: 2; grid-row: 1 / span 2; }
       .masthead { padding: 24px 16px 18px; }
       nav { gap: 17px; flex-wrap: wrap; }
       nav a { font-size: 10px; }
@@ -129,13 +139,13 @@
       <article>
         <!-- Replace the placeholder below with: <img class="story-image lead-image" src="your-photo.jpg" alt="Describe your photo"> -->
 <img class="story-image lead-image"
-     src="malaria-vaccine.jpg"
+     src="malaria-vaccine.png"
      alt="A malaria vaccine clinical trial">
         <div class="category">Science &amp; Health</div>
         <h1>Malaria Vaccine Research: What the Latest Developments Could Mean</h1>
-        <p class="dek">Scientists around the world are working on ways to improve malaria prevention. Here is a guide to the research, why it matters, and what questions remain.</p>
+        <p class="dek">Griffith University researchers are developing a malaria vaccine that may be easier to transport and store. Here is what the research shows so far, and what still needs to be tested.</p>
         <div class="byline">By Monty Hamon · 23 October 2026 · 5 min read · AT4</div>
-        <p class="story-copy">Scientists are making progress in the fight against malaria, with vaccine research offering new hope for protecting millions of people worldwide. As countries work to expand access to vaccination and improve prevention, researchers continue to explore ways to reduce infections and save lives. Read the full article below to learn more about the latest developments and what they could mean for the future of malaria prevention..</p>
+        <p class="story-copy">Scientists are making progress in the fight against malaria, with vaccine research offering new hope for protecting millions of people worldwide. As countries work to expand access to vaccination and improve prevention, researchers continue to explore ways to reduce infections and save lives. Read the full article below to learn more about the research and why it matters.</p>
       </article>
 
       <aside class="side-stories" id="health">
@@ -143,17 +153,17 @@
         <article class="side-story">
           <div class="category">Research</div>
           <h3>Griffith University and the Search for Better Malaria Prevention</h3>
-          <p>Really cool summary.</p>
+          <p>Griffith researchers are studying a vaccine designed to target malaria parasites in the blood.</p>
         </article>
         <article class="side-story">
           <div class="category">Global Health</div>
           <h3>Why Malaria Prevention Remains a Global Priority</h3>
-          <p>Even cooler summary.</p>
+          <p>Malaria vaccines can help protect children, but mosquito nets and treatment are still important.</p>
         </article>
         <article class="side-story" id="world">
           <div class="category">Explainer</div>
           <h3>How Do Vaccines Help the Immune System?</h3>
-          <p>the coolest summary.</p>
+          <p>Vaccines train the immune system to recognise a germ and respond to it more quickly.</p>
         </article>
       </aside>
     </section>
@@ -168,29 +178,56 @@
 
       <!-- Replace this placeholder with your own image using the same img format as above. -->
 <img class="story-image article-photo"
-     src="malaria-vaccination.jpg"
+     src="malaria-vaccination.png"
      alt="A child receiving a malaria vaccine">
-      <div class="photo-caption">Image caption:UNICEF Ethiopia / Demissew Bizuwerk.</div>
+      <div class="photo-caption">Image caption: UNICEF Ethiopia / Demissew Bizuwerk.</div>
 
       <div class="article-body">
         <p><strong>Overview</strong> Malaria remains a major global health challenge, but advances in vaccine development are creating new opportunities to protect vulnerable communities. Researchers and public health organisations are working to expand access to malaria vaccines, particularly in regions where the disease causes the greatest burden of illness. These efforts could help reduce severe cases and deaths, especially among young children, while supporting existing prevention methods such as mosquito nets and other control measures.</p>
 
         <h3>What researchers are investigating</h3>
-        <p>Griffith University researchers win another fight against malaria with the development of a broad spectrum vaccine that can be   freeze-dried making it suitable for deployment into malaria-endemic countries</p>
+        <p>Griffith University researchers are developing a vaccine called PlasProtecT. Unlike vaccines that mainly target an earlier stage of the malaria parasite, this one is designed to target the parasite when it is in the blood. The vaccine contains killed malaria parasites, along with other ingredients that help the immune system respond. The researchers reported that early tests in animals showed protection against malaria parasites. These are pre-clinical results, which means animal and laboratory findings alone cannot prove that the vaccine will work safely in people. Earlier versions of the vaccine have also been studied in small human studies, but that does not prove that the newer freeze-dried version will work the same way.</p>
 
-        <p>Explain any scientific terms in plain language. Be specific about whether the evidence comes from laboratory research, clinical trials, or a vaccine that is already approved for use. These are different stages of research and should not be described as if they are the same.</p>
+        <p>A useful feature of PlasProtecT is that it can be frozen or freeze-dried into a powder without losing its effect in the studies reported by Griffith. Freeze-drying removes water so a product can be stored as a powder. This could make a vaccine easier to transport to places where reliable refrigeration is difficult. However, scientists still need to test how safe and effective it is in people and how well it can be stored over time.</p>
 
-        <blockquote>“You could keep it on the shelf for a couple of months. Or, if you had to keep it in the fridge and your fridge went off for a week, you wouldn't have to throw it all out.”
-— Dr. Danielle Stanisic</blockquote>
+        <blockquote>“You could keep it on the shelf for a couple of months. Or, if you had to keep it in the fridge and your fridge went off for a week, you wouldn’t have to throw it all out.”
+        <br>— Associate Professor Danielle Stanisic, Griffith University</blockquote>
+
+        <h3>How the vaccine works</h3>
+        <p>Malaria is caused by tiny parasites called Plasmodium. They usually enter a person when an infected female Anopheles mosquito bites them. The parasites travel through the body and can infect red blood cells, causing symptoms such as fever, chills and headaches. A vaccine prepares the immune system to recognise parts of a germ or parasite, so the body can respond more effectively later. PlasProtecT uses killed parasites from the blood stage to show the immune system many parasite proteins. The aim is to help immune cells called T cells recognise and attack infected cells. This is a different approach from the RTS,S and R21 vaccines, which the World Health Organization recommends for children in areas where malaria is common.</p>
 
         <h3>Why it matters</h3>
-        <p>Give readers the wider context. You could explain who is affected by malaria, what prevention methods are currently used, and how the research might fit into existing public-health efforts. Support factual claims with reliable sources.</p>
+        <p>Malaria is still a major health problem. The World Health Organization estimated that there were 282 million malaria cases and 610,000 malaria deaths worldwide in 2024. Children under five are especially at risk. Existing vaccines, mosquito nets treated with insecticide, mosquito control, testing and early treatment can all help reduce the harm caused by malaria.</p>
+
+        <p>There is evidence that vaccination can make a difference. In pilot programmes in Ghana, Kenya and Malawi, the RTS,S vaccine was given to children through routine vaccination services. The World Health Organization reported a 13% reduction in deaths from all causes among children eligible for the vaccine, as well as fewer hospitalisations for severe malaria. These results are about the RTS,S vaccine in those countries, not the experimental PlasProtecT vaccine or Australia. They show why researchers are continuing to develop and improve malaria vaccines.</p>
+
+        <div class="data-graphic" role="img" aria-label="Results from malaria vaccine pilot programmes: 13 percent reduction in all-cause deaths among eligible children and 22 percent reduction in hospitalisations for severe malaria.">
+          <h4>What happened in the RTS,S pilot programmes?</h4>
+          <p class="graphic-note">Reported reductions among children eligible for vaccination in Ghana, Kenya and Malawi</p>
+          <div class="bar-row"><span>Deaths from all causes</span><div class="bar-track"><div class="bar-fill" style="width:13%"></div></div><strong>13%</strong></div>
+          <div class="bar-row"><span>Hospitalisations for severe malaria</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><strong>22%</strong></div>
+          <p class="graphic-note">Source: World Health Organization, World Malaria Report 2024. These are reductions reported in pilot areas, not figures for Australia or PlasProtecT.</p>
+        </div>
+
+        <h3>What does this mean for Australia?</h3>
+        <p>Australia was declared free of endemic malaria in 1981, but people still arrive with malaria after being infected overseas. Rare local transmission has also happened in parts of northern Australia, including the Torres Strait, where suitable mosquitoes live. This means malaria vaccines are mainly important for protecting people in countries where malaria spreads regularly, and for research that could help those communities. For Australians travelling to places where malaria is common, medical travel advice, mosquito bite prevention and any recommended medicines are still important. The PlasProtecT research does not mean a new vaccine is already available for travellers.</p>
 
         <h3>What happens next?</h3>
-        <p>Describe the next research steps or unanswered questions. Avoid saying that a new vaccine has been discovered or is ready for use unless reliable evidence confirms that exact claim.</p>
+        <p>Griffith’s 2025 Malaria Vaccine Project newsletter said the freeze-dried version was being prepared for a Phase I clinical trial in Melbourne. A Phase I trial mainly checks safety and how the body responds to the vaccine. I could not confirm published results from that specific trial in the sources available for this article. Researchers will also need to check how long protection lasts and how well it works against different parasite strains. Even if results are promising, it can take more studies before a vaccine is approved for general use.</p>
+
+        <h3>Checking the sources</h3>
+        <p><a href="https://news.griffith.edu.au/2021/10/21/researchers-develop-broad-spectrum-malaria-vaccine/" target="_blank" rel="noopener noreferrer">Griffith University’s research announcement</a> is useful because it comes from the university whose scientists developed PlasProtecT and describes the study and the researchers’ explanation. However, it is a university news story, so it mainly reports the team’s own work and should not be the only source used to judge whether the vaccine works in people.</p>
+        <p><a href="https://www.who.int/news-room/questions-and-answers/item/q-a-on-rts-s-malaria-vaccine" target="_blank" rel="noopener noreferrer">The World Health Organization’s malaria vaccine information</a> is reliable for public-health guidance because WHO reviews evidence and gives recommendations for countries. It is useful for understanding the results of RTS,S and R21 programmes, but those results should not be treated as proof that PlasProtecT has the same effect.</p>
 
         <h3>Sources</h3>
-        <p>Add links to the original study, an official research institution announcement, and a trusted public-health organisation. For example, you can start with the <a href="https://www.who.int/health-topics/malaria" target="_blank" rel="noopener noreferrer">World Health Organization's malaria information</a> and check any specific claim against the original source.</p>
+        <ul>
+          <li><a href="https://news.griffith.edu.au/2021/10/21/researchers-develop-broad-spectrum-malaria-vaccine/" target="_blank" rel="noopener noreferrer">Griffith University — Researchers develop broad-spectrum malaria vaccine</a></li>
+          <li><a href="https://www.griffith.edu.au/advancement/alumni/connect/we-are-griffith/vaccine-packet" target="_blank" rel="noopener noreferrer">Griffith University — A vaccine that comes in a packet?</a></li>
+          <li><a href="https://www.griffith.edu.au/__data/assets/pdf_file/0031/2137279/MVP-Newsletter-1st-Edition-2025.pdf" target="_blank" rel="noopener noreferrer">Griffith Malaria Vaccine Project — 2025 newsletter</a></li>
+          <li><a href="https://www.who.int/news-room/questions-and-answers/item/q-a-on-rts-s-malaria-vaccine" target="_blank" rel="noopener noreferrer">World Health Organization — Malaria vaccines (RTS,S and R21)</a></li>
+          <li><a href="https://www.who.int/news-room/fact-sheets/detail/malaria" target="_blank" rel="noopener noreferrer">World Health Organization — Malaria fact sheet</a></li>
+          <li><a href="https://www.cdc.gov.au/diseases/malaria" target="_blank" rel="noopener noreferrer">Australian Centre for Disease Control — Malaria</a></li>
+        </ul>
       </div>
     </article>
 
@@ -198,22 +235,22 @@
       <div class="section-kicker"><span>More to read</span></div>
       <div class="related-grid">
         <article class="related-card">
-          <div class="story-image image-placeholder" style="aspect-ratio:16/9">PHOTO 1</div>
+          <img class="story-image" src="malaria-mosquito.png" alt="An Anopheles mosquito that can spread malaria">
           <div class="category">Science</div>
-          <h3>Add another story headline</h3>
-          <p>Write a short teaser for another article, then replace this placeholder with your own photo.</p>
+          <h3>How Malaria Spreads</h3>
+          <p>Learn how infected mosquitoes pass malaria parasites to people and why mosquito control matters.</p>
         </article>
         <article class="related-card">
-          <div class="story-image image-placeholder" style="aspect-ratio:16/9">PHOTO 2</div>
+          <img class="story-image" src="malaria-vaccination.png" alt="A child receiving a malaria vaccine">
           <div class="category">Health</div>
-          <h3>Add a second story headline</h3>
-          <p>Use this card to highlight a related story or an explainer on your website.</p>
+          <h3>Why Childhood Vaccination Matters</h3>
+          <p>Malaria vaccines can lower the risk of illness for children in places where the disease is common.</p>
         </article>
         <article class="related-card">
-          <div class="story-image image-placeholder" style="aspect-ratio:16/9">PHOTO 3</div>
+          <img class="story-image" src="malaria-vaccine.png" alt="Research connected to malaria vaccine development">
           <div class="category">World</div>
-          <h3>Add a third story headline</h3>
-          <p>Keep the summary short so readers can scan the headlines quickly.</p>
+          <h3>Getting Vaccines to Remote Communities</h3>
+          <p>Storage and transport are important when health workers deliver vaccines in places with limited refrigeration.</p>
         </article>
       </div>
     </section>
